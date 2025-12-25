@@ -367,7 +367,7 @@
               <div class="text-xs text-gray-500">Bisnis Aktif</div>
             </div>
           </div>
-          <div class="flex items-center gap-2">
+          <div class="hidden sm:flex items-center gap-2">
             <div
               class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center"
             >
@@ -541,12 +541,6 @@
               <div
                 class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg text-sm"
               >
-                <i class="bi bi-geo-alt-fill text-primary-500"></i>
-                <span class="text-gray-700">Bogor Barat</span>
-              </div>
-              <div
-                class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg text-sm"
-              >
                 <i class="bi bi-mortarboard-fill text-primary-500"></i>
                 <span class="text-gray-700">Mentoring</span>
               </div>
@@ -555,6 +549,12 @@
               >
                 <i class="bi bi-cash-coin text-primary-500"></i>
                 <span class="text-gray-700">Akses ke Investor</span>
+              </div>
+              <div
+                class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg text-sm"
+              >
+                <i class="bi bi-geo-alt-fill text-primary-500"></i>
+                <span class="text-gray-700">Bogor Barat</span>
               </div>
             </div>
           </div>
@@ -935,20 +935,26 @@
         }
       });
 
-      // Scroll Up Button with direction detection
+      // Scroll Up Button with auto-hide after 2 seconds
       const scrollUpBtn = document.getElementById("scrollUp");
       let lastScrollY = window.scrollY;
-      let isScrollingDown = true;
+      let hideTimeout = null;
 
       window.addEventListener("scroll", () => {
         const currentScrollY = window.scrollY;
-        isScrollingDown = currentScrollY > lastScrollY;
+        const isScrollingDown = currentScrollY > lastScrollY;
 
-        // Show button only when scrolling down and past 300px
+        // Show button when scrolling down and past 300px
         if (currentScrollY > 300 && isScrollingDown) {
           scrollUpBtn.classList.add("visible");
-        } else {
-          scrollUpBtn.classList.remove("visible");
+
+          // Clear existing timeout
+          if (hideTimeout) clearTimeout(hideTimeout);
+
+          // Auto-hide after 2 seconds
+          hideTimeout = setTimeout(() => {
+            scrollUpBtn.classList.remove("visible");
+          }, 2000);
         }
 
         lastScrollY = currentScrollY;
