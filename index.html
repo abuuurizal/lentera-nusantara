@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lentera Nusantara - Kaum Muda Pelopor Kemajuan Nusantara</title>
+    <meta
+      name="description"
+      content="Ekosistem kewirausahaan pemuda yang berpusat di Bogor Barat. Inkubator bisnis dengan Edukasi, Mentoring, dan Akses Permodalan."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              primary: {
+                50: "#fefce8",
+                100: "#fef9c3",
+                200: "#fef08a",
+                300: "#fde047",
+                400: "#facc15",
+                500: "#eab308",
+                600: "#ca8a04",
+                700: "#a16207",
+                800: "#854d0e",
+                900: "#713f12",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* Gradient Text */
+      .gradient-text {
+        background: linear-gradient(135deg, #ca8a04, #eab308);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Subtle Glow */
+      .lantern-glow {
+        box-shadow: 0 0 40px rgba(234, 179, 8, 0.25);
+      }
+
+      /* Floating Animation */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .float-animation {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      /* Card Hover */
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Navbar Scroll Effect */
+      .navbar-scrolled {
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Scroll Up Button */
+      #scrollUp {
+        display: block;
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 40;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      #scrollUp:hover {
+        background: #fef9c3;
+        border-color: rgba(234, 179, 8, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      #scrollUp.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      #scrollUp i {
+        color: #6b7280;
+        font-size: 1.125rem;
+        transition: color 0.3s ease;
+      }
+
+      #scrollUp:hover i {
+        color: #ca8a04;
+      }
+
+      /* Section Scroll Animation */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .scroll-animate.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Indonesia Map Background */
+      .indonesia-map-bg {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cpath fill='%23f59e0b' fill-opacity='0.08' d='M180 180c10-5 25-3 35 2s18 15 28 20c8 4 18 6 25 12 6 5 9 14 15 19 7 6 17 8 23 15 5 6 6 15 10 22 5 8 14 14 17 23 3 8 1 18 5 25 5 8 16 12 20 21 3 7 0 16 3 24 4 9 14 15 17 25 2 8-2 17 1 25 4 10 16 16 18 26 2 8-4 17-2 25 3 10 14 17 15 27 1 8-6 16-6 24 0 9 8 18 6 27-2 8-12 13-15 21-4 9-1 20-6 28-6 9-18 13-22 23-3 8 1 18-4 25-6 8-19 10-24 18-4 7-1 17-6 24-6 8-18 11-23 20-4 7-1 17-6 24-6 8-18 11-24 18-5 6-4 15-10 21-7 7-19 8-25 16-5 7-3 17-9 23-7 7-19 8-25 16-5 6-3 15-9 21-7 7-19 9-25 17-6 7-4 18-11 24-8 6-20 5-27 12-6 6-6 16-13 22-8 5-20 4-27 11-6 6-6 16-13 22-8 5-20 4-27 11-6 6-6 16-13 22-8 5-20 4-27 10-6 6-6 16-13 21-8 5-21 3-28 9-6 5-7 15-14 20-8 4-21 2-28 8-7 5-8 15-15 20-8 4-21 1-28 6-7 5-9 15-16 19-8 4-21 0-28 5-8 5-10 15-18 19-8 3-21-1-29 4-8 4-11 15-19 18-9 3-21-2-29 2-9 4-13 14-21 17-9 3-21-3-29 1-9 3-14 13-22 16-9 2-20-4-29 0-9 3-15 13-24 15-9 2-20-5-29-2-10 3-16 12-25 14-9 1-20-6-29-4-10 2-17 12-26 13-10 1-20-7-29-6-10 2-18 11-27 12-10 1-20-8-29-7-10 1-19 10-28 11-10 0-20-9-29-9-10 1-19 10-28 10-10-1-20-10-29-10-10 0-20 9-29 9-10-1-19-11-28-11-10 0-20 9-29 8-10-1-19-11-28-12-10-1-20 8-29 7-10-2-18-12-27-13-10-2-20 7-29 5-10-2-18-12-27-15-10-2-20 6-29 4-10-3-17-13-26-16-9-3-20 5-29 2-10-4-16-14-25-17-9-4-20 4-28 0-10-4-15-15-24-19-9-5-20 3-28-2-9-5-14-16-22-20-9-5-20 1-28-4-9-5-13-16-21-21-8-6-19 0-27-6-8-6-12-18-19-23-8-6-19-2-26-8-7-7-10-18-17-25-7-7-19-4-24-11-6-8-7-19-13-26-6-8-17-6-22-14-5-9-4-21-9-29-5-9-15-9-19-18-4-9-1-21-5-30-4-10-13-11-16-21-3-10 2-21-1-31-3-10-11-13-13-23-2-10 4-21 2-30-2-10-9-14-10-24 0-10 6-20 5-29-1-10-7-15-7-25 1-9 9-18 9-27 1-9-5-16-3-25 2-9 11-16 14-24 3-9-1-17 3-25 5-8 14-13 19-20 6-7 4-16 11-22 7-6 18-7 26-12 8-5 10-14 19-17 9-4 20-1 29-3 10-3 15-12 25-13 11-1 22 6 32 6 11 0 21-8 31-7 11 1 20 10 30 12 11 2 22-4 32-1 11 3 19 13 29 17 11 4 23-1 33 4 11 5 18 16 28 22 10 6 23 3 32 10 10 8 15 20 24 29 9 9 22 10 29 20 8 10 10 24 16 35 7 11 18 16 22 28 5 12 3 26 6 39 3 13 11 22 11 35 1 14-5 27-7 41-2 14 1 28-4 41-5 14-16 24-23 36-8 13-8 28-19 39-11 11-27 16-40 25-14 9-24 20-40 27-16 6-33 6-50 10-17 3-33 9-50 9-17 1-34-4-51-6-17-2-34 0-51-5-17-5-32-16-48-23-17-8-35-12-50-23-15-11-27-27-40-41-14-13-29-25-40-41-11-16-18-36-27-54-9-18-19-35-24-55-5-20-4-42-6-63-2-21-6-42-4-63 2-21 11-41 16-62 5-20 7-42 16-61 9-19 24-35 36-52 13-16 27-32 43-45 16-13 35-22 54-31 18-9 38-15 58-20 20-5 41-6 62-8 21-2 42-2 63 0 21 2 42 7 62 13 20 5 40 13 58 23 19 10 35 24 52 38 17 13 34 27 47 44 14 17 24 37 34 57 10 20 19 41 24 63 5 22 6 44 4 66-2 22-8 44-17 64-9 21-22 40-37 57-16 17-35 32-55 43-20 12-43 19-65 24-23 5-46 6-69 4-23-2-46-8-67-18-22-10-42-24-59-42-18-18-32-40-43-63-11-23-18-49-20-75-2-26 1-52 9-77 8-25 21-48 38-69 17-21 39-40 62-54 24-14 50-24 77-29 27-5 55-5 82-1 27 5 53 14 77 28 25 14 47 32 66 54 19 22 36 47 47 74 12 27 19 57 21 86 2 30-2 60-11 88-10 29-25 56-45 80-20 24-45 45-72 61-28 16-58 28-89 34-31 7-64 8-95 4-31-4-62-14-90-29-28-15-54-35-75-60-22-24-39-53-51-84-12-31-18-64-19-97-1-33 4-67 15-98 11-32 28-62 50-88 22-26 49-49 79-66 31-18 64-30 99-36 35-6 71-6 105-1 35 5 68 16 99 33 31 16 59 38 83 64 24 27 44 57 58 90 15 33 24 69 26 105 3 36 0 73-10 107-10 35-27 68-49 97-23 29-51 55-82 75-32 20-67 35-103 43-37 8-75 10-112 5-37-4-74-15-107-32-34-17-65-40-91-68-26-28-48-61-63-96-16-36-25-74-27-113-3-38 1-78 12-115 11-37 29-72 52-104 24-31 53-60 86-82 33-22 70-39 109-48 39-9 80-12 120-7 40 4 79 16 114 34 36 18 68 43 96 72 27 30 50 64 66 101 16 37 26 77 28 118 2 40-3 81-15 120-13 38-32 75-58 107-26 32-57 61-93 83-35 22-75 38-116 47-41 8-84 10-125 4-42-5-82-18-119-38-37-20-71-47-99-79-29-32-52-69-68-109-17-40-26-83-28-127-2-43 4-87 17-129 13-41 33-81 60-116 27-35 60-66 97-90 38-24 79-42 123-52 43-10 88-12 132-7 45 5 88 18 128 38 40 21 76 48 106 81 31 33 56 71 74 112 18 42 29 86 33 131 3 45-2 91-14 135-13 44-33 86-60 123-27 37-61 71-99 98-38 27-81 47-126 60-45 12-92 17-138 14-47-2-93-13-136-31-43-18-84-43-119-75-35-32-65-70-88-112-23-42-40-88-49-135-9-47-10-96-3-143 6-47 21-93 43-136 22-42 51-82 86-115 35-34 76-62 120-82 44-20 92-33 140-38 49-5 98-2 145 9 47 11 91 30 131 56 41 26 77 58 107 96 30 37 55 80 71 125 17 46 26 94 27 143 1 49-6 98-21 145-15 46-38 90-67 129-30 39-66 74-107 102-41 28-86 50-134 64-47 14-97 20-147 18-49-2-99-12-145-30-46-18-90-44-128-76-38-33-71-72-97-115-26-43-46-91-57-141-12-49-15-101-10-152 5-50 18-100 39-146 21-46 50-89 84-127 35-38 76-71 121-97 45-26 94-45 145-56 51-11 104-13 155-8 51 6 101 19 148 40 47 20 90 49 128 83 38 34 71 74 97 119 26 45 45 93 56 144 11 50 14 103 8 154-6 51-20 101-42 148-22 47-51 90-87 128-35 38-77 72-123 98-46 27-96 47-148 59-52 12-106 16-159 12-52-4-104-16-153-36-49-20-94-48-134-83-40-35-75-76-102-122-27-46-48-96-60-148-12-52-16-107-11-160 5-53 18-106 40-155 22-50 52-96 88-137 37-40 80-77 128-105 48-28 100-50 154-63 54-13 111-17 167-13 56 4 111 17 162 38 52 21 100 51 142 87 43 37 80 80 109 128 30 48 52 101 66 156 13 55 18 113 14 170-4 56-17 112-38 165-22 52-52 101-89 145-37 43-81 82-130 113-49 30-103 54-159 68-56 14-115 20-173 16-58-3-115-15-169-36-54-20-105-50-150-86-46-36-86-79-118-128-33-49-58-103-74-160-16-57-24-117-22-176 2-59 13-118 33-174 20-55 48-108 83-156 36-47 79-91 127-127 49-36 103-66 160-87 57-21 118-33 179-36 60-3 121 3 179 18 58 16 113 40 163 72 51 32 97 71 136 117 40 46 72 97 96 152 24 55 40 115 47 175 8 61 7 123-3 184-10 60-28 119-55 173-27 55-61 106-102 151-41 46-88 86-140 119-52 33-109 59-168 76-59 17-121 25-183 24-61-1-123-11-181-30-59-19-114-47-164-82-50-35-95-77-132-125-38-48-69-101-92-158-23-57-38-118-44-180-6-62-3-125 9-186 12-61 32-121 61-176 29-56 65-108 109-153 43-46 93-86 148-118 55-32 115-58 177-74 62-16 127-24 191-23 64 1 128 12 189 32 60 20 118 48 170 84 52 36 99 79 138 129 40 50 72 105 96 165 24 60 40 123 47 188 7 65 5 131-7 195-11 64-32 127-61 185-29 59-66 113-111 161-45 48-97 91-154 125-57 34-119 62-183 79-64 18-132 27-198 26-67-1-134-11-198-31-64-20-126-48-181-86-56-37-106-83-148-136-43-52-78-112-104-175-26-64-44-131-52-200-8-69-7-140 4-209 10-68 31-135 59-198 29-63 66-122 111-174 45-53 98-100 157-138 59-39 124-70 192-91 68-21 139-33 210-36 71-2 143 5 212 22 69 16 135 42 196 76 61 34 117 75 166 124 49 49 91 105 125 166 34 61 60 127 76 196 17 69 24 141 22 212-3 71-15 142-36 210-21 68-52 133-91 192-38 59-85 112-138 157-52 45-111 82-174 111-63 28-130 49-198 59-69 11-140 12-209 4-69-8-136-26-200-52-63-27-123-61-175-104-53-42-99-92-136-148-38-55-66-117-86-181-20-64-30-131-31-198-1-66 8-134 26-198 17-64 45-126 79-183 34-57 77-109 125-154 48-45 102-82 161-111 58-29 121-50 185-61 64-12 130-14 195-7 65 7 128 23 188 47 60 24 115 56 165 96 50 39 93 86 129 138 36 52 64 110 84 170 20 61 32 124 32 189 1 64-8 129-23 191-16 62-40 122-74 177-33 55-74 105-121 148-47 43-100 80-158 109-57 29-119 50-183 61-63 11-129 13-193 5-65-7-128-24-188-49-60-25-116-58-165-99-50-41-93-89-128-143-35-54-63-114-81-177-18-63-28-129-28-195 0-67 10-133 29-197 20-63 48-124 85-179 37-55 81-105 132-147 51-42 108-78 170-104 62-27 128-44 195-52 67-7 136-5 202 7 67 12 131 33 191 63 60 29 116 67 164 113 49 46 90 99 123 158 33 58 58 122 73 189 16 66 22 135 18 203-3 68-17 135-40 199-23 64-55 124-94 179-40 54-87 103-140 145-53 41-112 76-174 101-62 25-128 41-196 47-67 6-136 2-203-11-66-13-131-36-191-68-60-32-115-72-162-120-48-48-88-103-119-164-32-60-55-126-68-194-14-68-18-139-12-208 5-69 21-137 46-201 25-64 58-125 99-180 42-55 90-104 145-146 55-42 116-77 181-102 65-25 134-41 203-47 70-6 141-2 210 12 69 14 135 38 197 71 62 33 119 75 168 125 50 50 92 108 125 172 33 64 58 133 72 204 15 71 20 145 14 217-6 72-22 143-48 210-26 68-61 131-104 189-43 58-94 110-151 155-57 45-121 83-188 111-68 28-139 47-212 56-72 9-147 8-219-3-73-12-143-33-209-64-66-31-128-71-183-120-55-49-103-106-142-169-40-64-71-133-92-206-21-73-33-149-34-225-2-76 6-153 24-227 18-74 45-146 82-213 36-67 82-129 135-184 53-55 113-103 179-142 65-39 137-69 211-89 74-20 152-30 229-30 77 0 154 10 228 30 74 20 146 50 211 89 66 39 126 87 179 142 53 55 99 117 135 184 37 67 64 139 82 213 18 74 26 151 24 227-1 76-13 152-34 225-21 73-52 142-92 206-39 63-87 120-142 169-55 49-117 89-183 120-66 31-136 52-209 64-72 11-147 12-219 3-73-9-144-28-212-56-67-28-131-66-188-111-57-45-108-97-151-155-43-58-78-121-104-189-26-67-42-138-48-210-6-72-1-146 14-217 14-71 39-140 72-204 33-64 75-122 125-172 49-50 106-92 168-125 62-33 128-57 197-71 69-14 140-18 210-12 69 6 138 22 203 47 65 25 126 60 181 102 55 42 103 91 145 146 41 55 74 116 99 180 25 64 41 132 46 201 6 69 2 140-12 208-13 68-36 134-68 194-31 61-71 116-119 164-47 48-102 88-162 120-60 32-125 55-191 68-67 13-136 17-203 11-68-6-134-22-196-47-62-25-121-60-174-101-53-42-100-91-140-145-39-55-71-115-94-179-23-64-37-131-40-199-4-68 2-137 18-203 15-67 40-131 73-189 33-59 74-112 123-158 48-46 104-84 164-113 60-30 124-51 191-63 66-12 135-14 202-7 67 8 133 25 195 52 62 26 119 62 170 104 51 42 95 92 132 147 37 55 65 116 85 179 19 64 29 130 29 197 0 66-10 132-28 195-18 63-46 123-81 177-35 54-78 102-128 143-49 41-105 74-165 99-60 25-123 42-188 49-64 8-130 6-193-5-64-11-126-32-183-61-58-29-111-66-158-109-47-43-88-93-121-148-34-55-58-115-74-177-15-62-24-127-23-191 1-65 12-128 32-189 20-60 48-118 84-170 36-52 79-99 129-138 50-40 105-72 165-96 60-24 123-40 188-47 65-7 131-5 195 7 64 11 127 32 185 61 59 29 113 66 161 111 47 43 88 93 121 148 34 55 58 115 74 177 15 62 24 127 23 191-1 65-12 128-32 189-20 60-48 118-84 170-36 52-79 99-129 138-50 40-105 72-165 96-60 24-123 40-188 47-65 7-131 5-195-7z'/%3E%3C/svg%3E");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Navbar -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-lg overflow-hidden">
+              <img
+                src="assets/konfigurasi/logo.jpg"
+                alt="Lentera Nusantara"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <span class="text-lg font-bold text-gray-800"
+              >Lentera Nusantara</span
+            >
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="#"
+              class="text-gray-600 hover:text-primary-600 font-medium transition-colors"
+              >Home</a
+            >
+            <a
+              href="#tentang"
+              class="text-gray-600 hover:text-primary-600 font-medium transition-colors"
+              >Tentang</a
+            >
+            <a
+              href="#artikel"
+              class="text-gray-600 hover:text-primary-600 font-medium transition-colors"
+              >Artikel</a
+            >
+            <a
+              href="#kontak"
+              class="px-5 py-2 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
+            >
+              Hubungi Kami
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="menuBtn" class="md:hidden text-gray-700 p-2">
+            <i class="bi bi-list text-2xl" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg">
+        <div class="px-4 py-4 space-y-2">
+          <a
+            href="#"
+            class="block px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg font-medium"
+            >Home</a
+          >
+          <a
+            href="#tentang"
+            class="block px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg font-medium"
+            >Tentang</a
+          >
+          <a
+            href="#artikel"
+            class="block px-4 py-3 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg font-medium"
+            >Artikel</a
+          >
+          <a
+            href="#kontak"
+            class="block px-4 py-3 bg-primary-500 text-white rounded-lg font-medium text-center"
+            >Hubungi Kami</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Banner Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="assets/konfigurasi/maps-indonesia.png"
+          alt="Maps Indonesia"
+          class="w-full h-full object-cover opacity-20"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-amber-50/90 via-white/80 to-yellow-50/90"
+        ></div>
+      </div>
+
+      <!-- Decorative Elements -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <!-- Floating Particles -->
+        <div
+          class="absolute top-20 left-10 w-3 h-3 bg-primary-400/30 rounded-full float-animation"
+          style="animation-delay: 0s"
+        ></div>
+        <div
+          class="absolute top-40 right-20 w-4 h-4 bg-primary-500/20 rounded-full float-animation"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute bottom-40 left-20 w-2 h-2 bg-primary-300/40 rounded-full float-animation"
+          style="animation-delay: 2s"
+        ></div>
+        <div
+          class="absolute top-60 left-1/4 w-5 h-5 bg-primary-400/15 rounded-full float-animation"
+          style="animation-delay: 0.5s"
+        ></div>
+        <div
+          class="absolute bottom-60 right-1/4 w-3 h-3 bg-primary-500/25 rounded-full float-animation"
+          style="animation-delay: 1.5s"
+        ></div>
+
+        <!-- Gradient Orbs -->
+        <div
+          class="absolute -top-40 -right-40 w-80 h-80 bg-primary-400/10 rounded-full blur-3xl"
+        ></div>
+        <div
+          class="absolute -bottom-40 -left-40 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"
+        ></div>
+      </div>
+
+      <!-- Content -->
+      <div
+        class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32"
+      >
+        <!-- Badge -->
+        <div
+          class="mb-6 inline-flex items-center gap-2 px-3 py-1.5 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-primary-100"
+        >
+          <span
+            class="w-2 h-2 bg-primary-500 rounded-full animate-pulse"
+          ></span>
+          <span class="text-xs font-medium text-primary-700"
+            >Komunitas Bisnis</span
+          >
+        </div>
+
+        <!-- Main Title -->
+        <h1
+          class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 text-gray-900 tracking-tight"
+        >
+          <span class="gradient-text">Lentera</span>
+          <br class="sm:hidden" />
+          <span class="text-gray-800"> Nusantara</span>
+        </h1>
+
+        <!-- Tagline -->
+        <p
+          class="text-xl sm:text-2xl text-gray-600 font-medium max-w-2xl mx-auto mb-10"
+        >
+          Kaum Muda Pelopor Kemajuan Nusantara
+        </p>
+
+        <!-- CTA Button -->
+        <div class="flex justify-center">
+          <a
+            href="https://chat.whatsapp.com/CaDFigX1e4ZESVpIPJu66F"
+            class="group inline-flex items-center gap-3 px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold text-lg hover:bg-primary-600 transition-all duration-300 shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-1"
+          >
+            <span>Gabung Sekarang</span>
+            <i
+              class="bi bi-arrow-right-circle text-xl transition-transform group-hover:translate-x-1"
+            ></i>
+          </a>
+        </div>
+
+        <!-- Stats Preview -->
+        <div class="mt-16 flex flex-wrap justify-center gap-8 sm:gap-12">
+          <div class="flex items-center gap-2">
+            <div
+              class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center"
+            >
+              <i class="bi bi-people-fill text-primary-600"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-xl font-bold text-gray-800">33+</div>
+              <div class="text-xs text-gray-500">Member Aktif</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div
+              class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center"
+            >
+              <i class="bi bi-shop text-primary-600"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-xl font-bold text-gray-800">12+</div>
+              <div class="text-xs text-gray-500">Bisnis Aktif</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div
+              class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center"
+            >
+              <i class="bi bi-person-check-fill text-primary-600"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-xl font-bold text-gray-800">3+</div>
+              <div class="text-xs text-gray-500">Mentor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="py-12 sm:py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <!-- Tagline -->
+        <div class="text-center mb-8">
+          <span
+            class="inline-block px-2.5 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-full mb-2"
+          >
+            Nilai Teguh Kami
+          </span>
+          <p class="text-gray-600 text-sm sm:text-base">
+            Core Values:
+            <span class="text-primary-600 font-bold">B.O.G.O.R</span>
+          </p>
+        </div>
+
+        <!-- Values Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4"
+        >
+          <!-- Berintegritas -->
+          <div
+            class="card-hover p-3 sm:p-4 rounded-xl bg-gray-50 flex items-center gap-3 lg:flex-col lg:text-center"
+          >
+            <div
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0"
+            >
+              <span class="text-lg sm:text-xl font-bold text-white">B</span>
+            </div>
+            <div class="flex-1 lg:flex-none">
+              <h3
+                class="text-sm sm:text-base font-bold text-gray-800 mb-0.5 lg:mb-1"
+              >
+                Berintegritas
+              </h3>
+              <p class="text-gray-600 text-[11px] sm:text-xs leading-relaxed">
+                Menjunjung tinggi kejujuran dan kepercayaan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Optimis -->
+          <div
+            class="card-hover p-3 sm:p-4 rounded-xl bg-gray-50 flex items-center gap-3 lg:flex-col lg:text-center"
+          >
+            <div
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0"
+            >
+              <span class="text-lg sm:text-xl font-bold text-white">O</span>
+            </div>
+            <div class="flex-1 lg:flex-none">
+              <h3
+                class="text-sm sm:text-base font-bold text-gray-800 mb-0.5 lg:mb-1"
+              >
+                Optimis
+              </h3>
+              <p class="text-gray-600 text-[11px] sm:text-xs leading-relaxed">
+                Mentalitas pemenang melihat peluang.
+              </p>
+            </div>
+          </div>
+
+          <!-- Gotong Royong -->
+          <div
+            class="card-hover p-3 sm:p-4 rounded-xl bg-gray-50 flex items-center gap-3 lg:flex-col lg:text-center"
+          >
+            <div
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0"
+            >
+              <span class="text-lg sm:text-xl font-bold text-white">G</span>
+            </div>
+            <div class="flex-1 lg:flex-none">
+              <h3
+                class="text-sm sm:text-base font-bold text-gray-800 mb-0.5 lg:mb-1"
+              >
+                Gotong Royong
+              </h3>
+              <p class="text-gray-600 text-[11px] sm:text-xs leading-relaxed">
+                Kolaborasi dan saling mendukung.
+              </p>
+            </div>
+          </div>
+
+          <!-- Observatif -->
+          <div
+            class="card-hover p-3 sm:p-4 rounded-xl bg-gray-50 flex items-center gap-3 lg:flex-col lg:text-center"
+          >
+            <div
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0"
+            >
+              <span class="text-lg sm:text-xl font-bold text-white">O</span>
+            </div>
+            <div class="flex-1 lg:flex-none">
+              <h3
+                class="text-sm sm:text-base font-bold text-gray-800 mb-0.5 lg:mb-1"
+              >
+                Observatif
+              </h3>
+              <p class="text-gray-600 text-[11px] sm:text-xs leading-relaxed">
+                Jeli membaca situasi pasar.
+              </p>
+            </div>
+          </div>
+
+          <!-- Responsif -->
+          <div
+            class="card-hover p-3 sm:p-4 rounded-xl bg-gray-50 flex items-center gap-3 lg:flex-col lg:text-center sm:col-span-2 lg:col-span-1"
+          >
+            <div
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0"
+            >
+              <span class="text-lg sm:text-xl font-bold text-white">R</span>
+            </div>
+            <div class="flex-1 lg:flex-none">
+              <h3
+                class="text-sm sm:text-base font-bold text-gray-800 mb-0.5 lg:mb-1"
+              >
+                Responsif
+              </h3>
+              <p class="text-gray-600 text-[11px] sm:text-xs leading-relaxed">
+                Cepat beradaptasi dengan tren.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description Section -->
+    <section id="tentang" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Content -->
+          <div>
+            <!-- <span
+              class="inline-block px-3 py-1 bg-primary-100 text-primary-700 text-sm font-medium rounded-full mb-4"
+            >
+              Tentang Kami
+            </span> -->
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">
+              Apa Itu <span class="gradient-text">Lentera Nusantara?</span>
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              <strong>Lentera Nusantara</strong> adalah ekosistem kewirausahaan
+              pemuda yang berpusat di Bogor Barat. Kami hadir sebagai inkubator
+              bisnis yang menjembatani semangat anak muda dengan
+              <strong>Edukasi (Mentoring)</strong> dan
+              <strong>Akses Permodalan (Investment)</strong>.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Kami fokus mencetak pengusaha muda yang tidak hanya punya ide,
+              tapi mampu mengeksekusinya menjadi bisnis nyata yang berdampak
+              bagi ekonomi daerah.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              <div
+                class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg text-sm"
+              >
+                <i class="bi bi-geo-alt-fill text-primary-500"></i>
+                <span class="text-gray-700">Bogor Barat</span>
+              </div>
+              <div
+                class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg text-sm"
+              >
+                <i class="bi bi-mortarboard-fill text-primary-500"></i>
+                <span class="text-gray-700">Mentoring</span>
+              </div>
+              <div
+                class="flex items-center gap-2 px-3 py-2 bg-white rounded-lg text-sm"
+              >
+                <i class="bi bi-cash-coin text-primary-500"></i>
+                <span class="text-gray-700">Akses ke Investor</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual -->
+          <div class="relative">
+            <div class="bg-white p-8 rounded-2xl shadow-sm">
+              <div class="text-center">
+                <div
+                  class="w-24 h-24 mx-auto mb-4 rounded-xl overflow-hidden lantern-glow"
+                >
+                  <img
+                    src="assets/konfigurasi/logo.jpg"
+                    alt="Lentera Nusantara"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 class="text-xl font-bold gradient-text mb-1">
+                  Lentera Nusantara
+                </h3>
+                <p class="text-gray-500 text-sm mb-6">
+                  Inkubator Bisnis Pemuda
+                </p>
+
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-primary-600">33+</div>
+                    <div class="text-gray-500 text-xs">Member</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-primary-600">12+</div>
+                    <div class="text-gray-500 text-xs">Bisnis</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-primary-600">3+</div>
+                    <div class="text-gray-500 text-xs">Mentor</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Member Benefits Section -->
+    <section class="py-16 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="text-center mb-10">
+          <span
+            class="inline-block px-3 py-1 bg-primary-100 text-primary-700 text-sm font-medium rounded-full mb-4"
+          >
+            Value Proposition
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
+            Keuntungan Menjadi <span class="gradient-text">Member</span>
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Bergabung dengan Lentera Nusantara membuka pintu menuju ekosistem
+            bisnis yang mendukung pertumbuhan Anda.
+          </p>
+        </div>
+
+        <!-- Benefits Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Business Mastery -->
+          <div
+            class="group p-4 sm:p-6 rounded-2xl bg-gray-50 hover:bg-blue-50/50 transition-colors duration-300 flex items-start gap-4 md:flex-col md:items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl flex-shrink-0 md:mb-2"
+            >
+              <i class="bi bi-mortarboard-fill"></i>
+            </div>
+            <div class="flex-1 md:flex-none">
+              <h3 class="font-bold text-lg text-gray-800 mb-1 md:mb-2">
+                Business Mastery
+              </h3>
+              <p class="text-gray-500 text-sm leading-relaxed">
+                Akses eksklusif ke kelas, workshop, dan mentoring bisnis praktis
+                dari pengusaha berpengalaman.
+              </p>
+            </div>
+          </div>
+
+          <!-- Investor Access -->
+          <div
+            class="group p-4 sm:p-6 rounded-2xl bg-gray-50 hover:bg-yellow-50/50 transition-colors duration-300 flex items-start gap-4 md:flex-col md:items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-yellow-100 text-yellow-600 flex items-center justify-center text-xl flex-shrink-0 md:mb-2"
+            >
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <div class="flex-1 md:flex-none">
+              <h3 class="font-bold text-lg text-gray-800 mb-1 md:mb-2">
+                Investor Access
+              </h3>
+              <p class="text-gray-500 text-sm leading-relaxed">
+                Kesempatan prioritas untuk pitching ide bisnis langsung di
+                hadapan investor rekanan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Strategic Network -->
+          <div
+            class="group p-4 sm:p-6 rounded-2xl bg-gray-50 hover:bg-green-50/50 transition-colors duration-300 flex items-start gap-4 md:flex-col md:items-start"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl flex-shrink-0 md:mb-2"
+            >
+              <i class="bi bi-people-fill"></i>
+            </div>
+            <div class="flex-1 md:flex-none">
+              <h3 class="font-bold text-lg text-gray-800 mb-1 md:mb-2">
+                Strategic Network
+              </h3>
+              <p class="text-gray-500 text-sm leading-relaxed">
+                Jejaring kuat dengan sesama pengusaha muda dan stakeholder
+                pemerintahan di Bogor Barat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code of Conduct Section -->
+    <section class="py-12 sm:py-16 bg-slate-50 border-y border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2
+          class="text-xl sm:text-2xl font-bold text-slate-800 mb-8 flex justify-center items-center gap-2"
+        >
+          <i class="bi bi-shield-check text-primary-500"></i>
+          Kode Etik Member
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          <!-- Integritas -->
+          <div
+            class="bg-white p-5 sm:p-6 rounded-xl border border-slate-100 shadow-sm"
+          >
+            <h4 class="font-bold text-slate-800 mb-2">Integritas</h4>
+            <p class="text-xs text-slate-500">
+              Jujur dan transparan dalam setiap kerjasama maupun pelaporan
+              perkembangan bisnis.
+            </p>
+          </div>
+          <!-- Mentalitas Baja -->
+          <div
+            class="bg-white p-5 sm:p-6 rounded-xl border border-slate-100 shadow-sm"
+          >
+            <h4 class="font-bold text-slate-800 mb-2">Mentalitas Baja</h4>
+            <p class="text-xs text-slate-500">
+              Pantang menyerah menghadapi tantangan bisnis dan siap mengikuti
+              proses (bukan mental instan).
+            </p>
+          </div>
+          <!-- Sinergi Positif -->
+          <div
+            class="bg-white p-5 sm:p-6 rounded-xl border border-slate-100 shadow-sm"
+          >
+            <h4 class="font-bold text-slate-800 mb-2">Sinergi Positif</h4>
+            <p class="text-xs text-slate-500">
+              Dilarang menjatuhkan usaha sesama anggota, wajib mengutamakan
+              kolaborasi yang sehat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="gabung" class="py-16 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="relative overflow-hidden bg-gray-50 border border-gray-100 rounded-2xl p-8 sm:p-12 lg:p-16"
+        >
+          <!-- Background Decoration -->
+          <div
+            class="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-48 h-48 bg-primary-400/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"
+          ></div>
+
+          <!-- Content -->
+          <div
+            class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8"
+          >
+            <!-- Text Content -->
+            <div class="text-center lg:text-left max-w-xl">
+              <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                Siap Bergabung dengan Lentera Nusantara?
+              </h2>
+              <p class="text-gray-500 text-sm sm:text-base mb-6 lg:mb-0">
+                Jadilah bagian dari komunitas pengusaha muda yang saling
+                mendukung.
+              </p>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="flex-shrink-0">
+              <a
+                href="https://chat.whatsapp.com/CaDFigX1e4ZESVpIPJu66F"
+                target="_blank"
+                class="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-xl font-semibold text-lg hover:bg-[#1fb855] transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 hover:-translate-y-0.5"
+              >
+                <i class="bi bi-whatsapp text-xl"></i>
+                Gabung Sekarang
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak" class="py-12 bg-gray-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10"
+        >
+          <!-- Brand -->
+          <div class="lg:col-span-2">
+            <a href="#" class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg overflow-hidden">
+                <img
+                  src="assets/konfigurasi/logo.jpg"
+                  alt="Lentera Nusantara"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <span class="text-lg font-bold text-primary-400"
+                >Lentera Nusantara</span
+              >
+            </a>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4 max-w-sm">
+              Ekosistem kewirausahaan pemuda yang berpusat di Bogor Barat.
+              Menyalakan semangat, menerangi jalan menuju kemajuan.
+            </p>
+            <div class="flex gap-3">
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-gray-400 hover:text-primary-400 transition-colors"
+              >
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-gray-400 hover:text-primary-400 transition-colors"
+              >
+                <i class="bi bi-tiktok"></i>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-gray-400 hover:text-primary-400 transition-colors"
+              >
+                <i class="bi bi-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Navigasi -->
+          <div>
+            <h4 class="text-white font-semibold mb-4">NAVIGASI</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#tentang"
+                  class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
+                  >Tentang Kami</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#artikel"
+                  class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
+                  >Artikel</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#kontak"
+                  class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
+                  >Hubungi Kami</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div>
+            <h4 class="text-white font-semibold mb-4">LINK</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
+                  >Sitemap</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
+                  >Terms & Conditions</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div
+          class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-3"
+        >
+          <p class="text-gray-500 text-sm">
+            &copy; 2025 Lentera Nusantara. All rights reserved.
+          </p>
+          <!-- <p class="text-gray-600 text-sm">
+            Dibuat dengan <i class="bi bi-heart-fill text-primary-500"></i> di
+            Bogor Barat
+          </p> -->
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Up Button -->
+    <button id="scrollUp" aria-label="Scroll to top">
+      <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile Menu Toggle
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.getElementById("menuIcon");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("bi-list");
+        menuIcon.classList.toggle("bi-x-lg");
+      });
+
+      // Close mobile menu when clicking on links
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuIcon.classList.remove("bi-x-lg");
+          menuIcon.classList.add("bi-list");
+        });
+      });
+
+      // Navbar Scroll Effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("navbar-scrolled");
+        } else {
+          navbar.classList.remove("navbar-scrolled");
+        }
+      });
+
+      // Scroll Up Button with direction detection
+      const scrollUpBtn = document.getElementById("scrollUp");
+      let lastScrollY = window.scrollY;
+      let isScrollingDown = true;
+
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        isScrollingDown = currentScrollY > lastScrollY;
+
+        // Show button only when scrolling down and past 300px
+        if (currentScrollY > 300 && isScrollingDown) {
+          scrollUpBtn.classList.add("visible");
+        } else {
+          scrollUpBtn.classList.remove("visible");
+        }
+
+        lastScrollY = currentScrollY;
+      });
+
+      scrollUpBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Section Scroll Animation using Intersection Observer
+      const animateSections = document.querySelectorAll("section:not(#home)");
+
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15,
+      };
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      }, observerOptions);
+
+      animateSections.forEach((section) => {
+        section.classList.add("scroll-animate");
+        sectionObserver.observe(section);
+      });
+
+      // Smooth Scroll for Anchor Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
